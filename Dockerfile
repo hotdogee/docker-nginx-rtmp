@@ -1,6 +1,6 @@
-ARG NGINX_VERSION=1.16.0
-ARG NGINX_RTMP_VERSION=1.2.1
-ARG FFMPEG_VERSION=4.1.3
+ARG NGINX_VERSION=1.17.1
+ARG NGINX_RTMP_VERSION=master
+ARG FFMPEG_VERSION=4.1.4
 
 
 ##############################
@@ -36,8 +36,8 @@ RUN cd /tmp && \
 
 # Get nginx-rtmp module.
 RUN cd /tmp && \
-  wget https://github.com/arut/nginx-rtmp-module/archive/v${NGINX_RTMP_VERSION}.tar.gz && \
-  tar zxf v${NGINX_RTMP_VERSION}.tar.gz && rm v${NGINX_RTMP_VERSION}.tar.gz
+  wget https://github.com/arut/nginx-rtmp-module/archive/${NGINX_RTMP_VERSION}.tar.gz && \
+  tar zxf ${NGINX_RTMP_VERSION}.tar.gz && rm v${NGINX_RTMP_VERSION}.tar.gz
 
 # Compile nginx with nginx-rtmp module.
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
@@ -125,7 +125,7 @@ RUN rm -rf /var/cache/* /tmp/*
 ##########################
 # Build the release image.
 FROM alpine:3.8
-LABEL MAINTAINER Alfred Gutierrez <alf.g.jr@gmail.com>
+LABEL MAINTAINER Han Lin <hotdogee@gmail.com>
 
 RUN apk add --update \
   ca-certificates \
