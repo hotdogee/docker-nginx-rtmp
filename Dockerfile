@@ -37,7 +37,7 @@ RUN cd /tmp && \
 # Get nginx-rtmp module.
 RUN cd /tmp && \
   wget https://github.com/arut/nginx-rtmp-module/archive/${NGINX_RTMP_VERSION}.tar.gz && \
-  tar zxf ${NGINX_RTMP_VERSION}.tar.gz && rm v${NGINX_RTMP_VERSION}.tar.gz
+  tar zxf ${NGINX_RTMP_VERSION}.tar.gz && rm ${NGINX_RTMP_VERSION}.tar.gz
 
 # Compile nginx with nginx-rtmp module.
 RUN cd /tmp/nginx-${NGINX_VERSION} && \
